@@ -108,6 +108,62 @@
         <button>Enviar</button>
 
     </div>
+<script>
+        const input = document.querySelector("input");
+            const button = document.querySelector("button");
+                const chat = document.querySelector(".chat");
 
+                    function responder() {
+                            const mensaje = input.value.trim();
+
+                                    if (mensaje === "") return;
+
+                                            // Mostrar mensaje del cliente
+                                                    const usuario = document.createElement("div");
+                                                            usuario.className = "user";
+                                                                    usuario.textContent = mensaje;
+                                                                            chat.appendChild(usuario);
+
+                                                                                    input.value = "";
+
+                                                                                            // Crear respuesta de NEXORA
+                                                                                                    const bot = document.createElement("div");
+                                                                                                            bot.className = "bot";
+
+                                                                                                                    const texto = mensaje.toLowerCase();
+
+                                                                                                                            if (texto.includes("precio") || texto.includes("cuesta") || texto.includes("costo")) {
+                                                                                                                                        bot.textContent = "✂️ El corte tradicional tiene un valor de $25.000. ¿Quieres reservar una cita?";
+                                                                                                                                                } 
+                                                                                                                                                        else if (texto.includes("horario") || texto.includes("abre")) {
+                                                                                                                                                                    bot.textContent = "🕐 Estamos disponibles de lunes a sábado de 9:00 AM a 7:00 PM.";
+                                                                                                                                                                            } 
+                                                                                                                                                                                    else if (texto.includes("ubicación") || texto.includes("direccion") || texto.includes("dónde")) {
+                                                                                                                                                                                                bot.textContent = "📍 Estamos ubicados en Barbería Nova. Pronto podrás configurar la dirección desde el panel de NEXORA.";
+                                                                                                                                                                                                        } 
+                                                                                                                                                                                                                else if (texto.includes("cita") || texto.includes("reservar")) {
+                                                                                                                                                                                                                            bot.textContent = "📅 ¡Claro! Puedo ayudarte a reservar una cita. Próximamente podremos conectar el sistema de reservas.";
+                                                                                                                                                                                                                                    } 
+                                                                                                                                                                                                                                            else if (texto.includes("hola") || texto.includes("buenas")) {
+                                                                                                                                                                                                                                                        bot.textContent = "¡Hola! 👋 Soy NEXORA, el asistente virtual de Barbería Nova. ¿En qué puedo ayudarte?";
+                                                                                                                                                                                                                                                                } 
+                                                                                                                                                                                                                                                                        else {
+                                                                                                                                                                                                                                                                                    bot.textContent = "🤖 Soy NEXORA. Todavía estoy aprendiendo, pero puedo ayudarte con precios, horarios, ubicación y reservas.";
+                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                    chat.appendChild(bot);
+
+                                                                                                                                                                                                                                                                                                            // Bajar automáticamente al último mensaje
+                                                                                                                                                                                                                                                                                                                    chat.scrollTop = chat.scrollHeight;
+                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                            button.addEventListener("click", responder);
+
+                                                                                                                                                                                                                                                                                                                                input.addEventListener("keydown", function(event) {
+                                                                                                                                                                                                                                                                                                                                        if (event.key === "Enter") {
+                                                                                                                                                                                                                                                                                                                                                    responder();
+                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                </script>
 </body>
 </html>
